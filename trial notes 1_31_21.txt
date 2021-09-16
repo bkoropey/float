@@ -1,0 +1,35 @@
+import itertools
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+import matplotlib
+import matplotlib.pyplot as plt
+
+from pylab import rcParams
+rcParams['figure.figsize'] = 18,8
+
+df = pd.read_excel("C:/Users/KOROPEYB/Desktop/Rate Engineering/Tesla EV Charging Standard Vs. Standby Rates Comparison assignment 1_5_2021/trial.xlsx",sheet_name= "Sheet1")
+
+y = df.groupby('Date')['DailyPk'].sum().reset_index()  # formatting date into correct format
+
+y
+
+y = y.set_index('Date')
+
+y.index
+
+y = y['DailyPk'].resample('MS').mean()
+
+y
+
+y.plot(figsize = (15,6))
+
+
+decomposition = sm.tsa.seasonal_decompose(y, model= 'additive')
+			# breaks it down into the seasonal & trend components
+
+fig = decomposition.plot()
+plt.show()
+
+# Note that decomposition needs atleast 24 months of data (not 13 months!)
+

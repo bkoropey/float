@@ -1,0 +1,19 @@
+Sub PeakTimes()
+
+Dim lastRow As Long
+Dim k As Integer
+
+lastRow = Worksheets("input_convert").Range("$Y$1$").Value
+
+k = 18
+
+For k = 18 To 29
+
+Cells(k, "AM") = WorksheetFunction.Index(Range("L2:U" & lastRow), WorksheetFunction.Match(Cells(k, "AH"), _
+Range("U2:U" & lastRow), 0), 1)
+
+
+Next k
+
+End Sub
+

@@ -1,0 +1,330 @@
+first install libaries in anaconda prompt
+pulp, scipy, glpk, pandas, seaborn: 
+
+
+pip install pandas
+
+cls
+
+python -m pip install -U "scipy==1.4.*" "pulp==2.1"
+
+
+$ pulptest
+$ conda install -c conda-forge glpk
+
+
+
+___________________
+open Jupiter notebook & name it LinearProgramming
+	by changing e.g. "UNTITLED4" to LinearProgSample at the top
+
+- goto computer search box at bottom & search for
+	LinearProgSample
+
+-  then on bottom right click: 
+	e.g. Location  C:\Users\KOROPEYB (takes you to location)
+
+- double click on ANACONDA3 folder - LIB - 
+
+
+- CMD in search to open Windows Command prompt
+	
+tar -xvzf C:\Users\KOROPEYB\Downloads\PuLP-2.3.1.tar.gz -C C:\Users\KOROPEYB\Anaconda3\Lib\site-packages
+
+tar -xvzf C:\Users\KOROPEYB\Downloads\glpk-0.4.6.tar.gz -C C:\Users\KOROPEYB\Anaconda3\Lib\site-packages
+
+tar -xvzf C:\Users\KOROPEYB\Downloads\scipy-1.5.4.tar.gz -C C:\Users\KOROPEYB\Anaconda3\Lib\site-packages
+
+- so now that have libraries imported into LIB folder
+	in the ANACONDA3 folder on desktop
+
+	so run jupiter notebook to see if runs
+
+
+from pulp import LpMaximize, LpProblem, LpStatus,
+     LpSum, LpVariable
+
+
+- Search & open Anaconda Prompt:
+
+	python -m venv linprog
+	
+	linprog\Scripts\activate
+
+	
+C:\Users\KOROPEYB\Anaconda3\Lib\site-packages
+
+
+____________________________________________________
+12/6/20
+
+for LinearProgramming sample problem to Maximize or Minimize the target 
+valueof a Linear Equation via a Metric Formulation, we do following:
+
+https://realpython.com/linear-programming-python/
+
+
+open JupiterNotebook - New - Python3
+
+from pulp import LpMaximize, LpProblem, LpStatus, lpSum, LpVariable
+
+# Define the model
+model = LpProblem(name="resource-allocation", sense=LpMaximize)
+
+# Define the decision variables
+x = {i: LpVariable(name=f"x{i}", lowBound=0) for i in range(1, 5)}
+
+# Add constraints
+model += (lpSum(x.values()) <= 50, "manpower")
+model += (3 * x[1] + 2 * x[2] + x[3] <= 100, "material_a")
+model += (x[2] + 2 * x[3] + 3 * x[4] <= 90, "material_b")
+
+# Set the objective
+model += 20 * x[1] + 12 * x[2] + 40 * x[3] + 25 * x[4]
+
+# Solve the optimization problem
+status = model.solve()
+
+
+# Get the results
+print(f"status: {model.status}, {LpStatus[model.status]}")
+print(f"objective: {model.objective.value()}")
+
+for var in x.values():
+    print(f"{var.name}: {var.value()}")
+
+for name, constraint in model.constraints.items():
+    print(f"{name}: {constraint.value()}")
+
+_____________________________________________
+SINCE THE ABOVE DOESN'T WORK, Instead Use SciPy BELOW:
+
+from scipy.optimize import linprog
+
+obj = [-20, -12, -40, -25]
+
+lhs_ineq = [[1, 1, 1, 1],  # Manpower
+            [3, 2, 1, 0],  # Material A
+            [0, 1, 2, 3]]  # Material B
+
+rhs_ineq = [ 50,  # Manpower
+            100,  # Material A
+             90]  # Material B
+
+opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq,
+              method="revised simplex")
+print(opt)
+
+
+# WHEN RUN GET THE FOLLOWING RESULTS:
+
+ con: array([], dtype=float64)				# we want to maximize the profit by determining how many units of each product to manufacture given constraints limited manpower can only produce up to 50 units or products per day, 100 units of RawMaterialA, 90 units of RawMaterialB, and 4th constraint number of units of each product (x1, x2, x3, x4) each >= zero 
+     fun: -1900.0					# max profit is $1900 which get by producing 5 units of first product and 45 units of the third product
+ message: 'Optimization terminated successfully.'
+     nit: 2						# no. of iterations it had to go through to come up with solution
+   slack: array([ 0., 40.,  0.])			# slack is how much more room you have, e.g. 100 units of RawMatA on-hand but consume 60 so 40 remaining,  0 (zero) is the first constraint (manpower of 50 units produced) so no remainder all 50 units produced, and last zero(0) is the 3rd constraint of materialB or all 90 units used to Achieve optimal profit.  NOTE SolverExcel doesn't give you slack output value
+  status: 0						# integer between zero (0) to four (4) given 5 possible outcomes of this question (0, 1, 2, 3, 4 = 5) zero means the Optimal solution was found.    Status 3 = problem appears unbounded no restrictions to the solutions because contraints are too loose.						
+ success: True						# 
+       x: array([ 5.,  0., 45.,  0.])			# x is no. of units of each product individually to be produced (5 units of product 1, 0 units of product 2, 45 units of product 3 and 0 units of product 4)
+
+
+# goto https://realpython.com/linear-programming-python/
+# and scroll down to "Resource Allocation" to understand problem
+
+
+Steps:
+
+1) define your variables (e.g. 4 variables, x1, x2, x3, x4);
+2) write your constraint as equations (or inequalities) in-terms
+	of the variables above;
+		e.g. x1+x2+x3+x4 <= 50
+3) write the objective Function (to maximize or minimize some expressions)
+		e.g. Profit = 20x1 + 12x2 + 40x3 + 25x4 
+			Objective is to Maximize Profit
+
+4) code the system of equations or inequalities using the approach above 
+	where we extract the coeffients of the Left Hand side inequaltiy 
+		(e.g. [1,1,1,1] from x1+x2+x3+x4 <= 50
+		and the 
+	Right Hand side inequality (e.g. 50, 100, 90 = right hand side of the contraint)
+			[50,100,90]
+
+
+	from scipy.optimize import linprog
+	obj = [-20, -12, -40, -25]
+	lhs_ineq = [[1, 1, 1, 1],  # Manpower
+	            [3, 2, 1, 0],  # Material A
+        	    [0, 1, 2, 3]]  # Material B
+
+	rhs_ineq = [ 50,  # Manpower
+	            100,  # Material A
+        	     90]  # Material B
+	opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq,
+              method="revised simplex")
+	print(opt)
+
+
+5) print out of solution
+
+6) save jypiterNotebook file:
+	e.g. goto to top UNTITLED4 and change to 12-6-20LinearRegression
+	see openfile lower left and click on its ... (3 dots on its right)
+		and then click on ShowInFolder from drop-down
+		and then rightClickCopy or send
+
+
+____________________
+2/7/21 Linear Program for MAC variables:
+
+Total MAC with Adjusted GRT = 
+
+(MonthlyAdjustedMAC 
++ MonthlyAdjustmentMACCharge 
++ UncollectibleDeliveryMACCharge 
++  TransitionAdjustmentMACCharge) 
+* (1 + GRT Delivery Tax) 
+* Sales volume (kWh).
+
+
+Steps:
+
+1) define your variables (e.g. 4 variables, x1, x2, x3, x4);
+		NOTES:		PYTHON COEFF
+MAC 		= x1		
+MACRcncAdj 	= x2
+MACUncDel	= x3
+MACTrnAdj	= x4
+GRTDel		= avg of 4 yr historical = 2.478%
+
+2) write your constraint as equations (or inequalities) in-terms
+	of the variables above (these are the Max/Mins for 4yrs Decembers on each)
+		
+x1 <= 0.0113,   x1 >= 0.0084
+x2 <= 0.008283, x2 >= -0.003412
+x3 <= 0.000075, x3 >= 0.000027
+x4 <= 0.000001, x4 >= -0.000079
+
+
+3) write the objective Function (to maximize or minimize some expressions)
+		e.g. Profit = 20x1 + 12x2 + 40x3 + 25x4 
+			Objective is to Maximize Profit
+
+TOTALMAC = (x1+x2+x3+x4) * (1 + 0.02478) * 50,000
+TOTALMAC = (x1+x2+x3+x4) * (51,239)
+
+
+4) code the system of equations or inequalities using the approach above 
+	where we extract the coeffients of the Left Hand side inequaltiy 
+		(e.g. [1,1,1,1] from x1+x2+x3+x4 <= 50
+		and the 
+	Right Hand side inequality (e.g. 50, 100, 90 = right hand side of the contraint)
+			[50,100,90]
+
+	 because we have only 1
+	 variable in each constraint
+
+	LS: x1 x2  x3  x4  		        RS:
+	  [ 1  0   0   0   ]		        0.0113
+ 	  [ 0  1   0   0   ]			0.008283	
+	  [ 0  0   1   0   ]			0.000075
+	  [ 0  0   0   1   ]			0.000001
+	  [ 0  0   0   0   ]			0.025282								
+	  [-1  0   0   0   ]			-0.0084
+	  [0   -1  0   0   ]			+0.003412
+	  [0   0   -1  0   ]			-0.000027
+	  [0   0   0  -1   ]			+0.000079
+	  [0   0   0   0   ]			-0.02309		
+
+from scipy.optimize import linprog
+obj = [51239, 51239, 51239, 51239]   # Default is minimization problem, if we did obj = [-51239, -51239, -51239, -51239]     
+lhs_ineq = [[1, 0, 0, 0],	# MAC (>= min)
+	        [0, 1, 0, 0],  # MACRcncAdj (>=min) 
+	        [0, 0, 1, 0],  # MACUncDel (>=min)	
+	        [0, 0, 0, 1],  # MACTrnAdj (>=min)
+	        [-1, 0, 0, 0],  # MAC (<= max)
+	        [0, -1, 0, 0],  # MACRcncAdj (<=max)	
+	        [0, 0, -1, 0],  # MACUncDel (<=max)
+	        [0, 0, 0, -1]]	# MACTrnAdj (<=max)
+
+rhs_ineq = [ 0.0113,  	# MAC (>= min)
+            0.008283, 	# MACRcncAdj (>=min)
+	    0.000075, 	# MACUncDel (>=min)
+	    0.000001,   # MACTrnAdj (>=min)
+	    -0.0084,	# MAC (<= max)
+	    0.003412,   # MACRcncAdj (<=max)
+	    -0.000027,  # MACUncDel (<=max)
+	    0.000079]   # MACTrnAdj (<=max)
+
+
+opt = linprog(c = obj, A_ub = lhs_ineq, b_ub=rhs_ineq,
+              method="revised simplex")
+print(opt)
+
+
+5) print out of solution:
+	  con: array([], dtype=float64)
+     	fun: 431.7910529999999
+	 message: 'The solution was determined in presolve as there are no non-trivial constraints.'
+     	nit: 0
+   	slack: array([2.900e-03, 8.283e-03, 4.800e-05, 1.000e-06, 0.000e+00, 3.412e-03,
+       	0.000e+00, 7.900e-05])
+  	status: 0
+ 	success: True
+       	x: array([8.4e-03, 0.0e+00, 2.7e-05, 0.0e+00])
+
+ANOTHER WORDS: the answer is x1 = 0.0084, x2 = 0.0, x3 = 0.000027, x4 = 0.0
+	These are the values for x1, x2, x3 & x4 to OPTIMIZE the Value of the
+	Objective Function (or the Minimum possible value for the objective function
+	in  this case)
+
+So we plug our values back in and get the answer:
+	SUM(0.0084, 0.0, 0.000027, 0.0) * (1 + 2.4780%) * 50000 = $431.79
+
+
+
+
+6) save jypiterNotebook file:
+	e.g. goto to top UNTITLED4 and change to 12-6-20LinearRegression
+	see openfile lower left and click on its ... (3 dots on its right)
+		and then click on ShowInFolder from drop-down
+		and then rightClickCopy or send
+
+
+
+#----------------
+if we maximized the objective functions instead above's minimization, 
+via 
+	from scipy.optimize import linprog
+	obj = [-51239, -51239, -51239, -51239]
+
+  x: array([1.130e-02, 8.283e-03, 7.500e-05, 1.000e-06])
+
+    = $1005.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

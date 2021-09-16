@@ -1,0 +1,94 @@
+once pull SC9 tables into powerbi
+
+given 25 bins of 0-1, 1-2,...,24-25, then 
+
+- then RIGHT CLICK on BILLED DEMAND 
+- Group Type: BIN - Bin Type: Number of BINS 
+- Bin Count: 25 
+- click OK
+
+Then Notice below Billed Demand filed is a new
++BILLED DEMAND box - and check its box for e.g. +Billed Demand
+- Then goto VISUALIZATIONS - click Clustered Column Chart
+- Then drag e.g. +BILLED DEMAND(bins) into AXIS field
+- WHILE also drag e.g. +BILLED DEMAND into VALUES field
+	- then in VALUES Billed Demand dropDown to COUNT DISTINCT	
+
+- THen to Right of Axis click FORMAT (rollerBrushIcon)
+	then under Xaxis under Type change to Categorical (from continuous)
+
+	
+
+--- so we see from above that about 5,103 customers
+	in SC9 fall into 0-1 bucket 
+
+
+--- then to writeOut to excel do following:
+	- Publish
+	- Save As only allows to save as PDF export (paid version allows for export to excel)
+
+
+
+"\\m02009fi\datadirs\Rate Engineering\ELECRATE\RateCase 2019\Initial Filing\Exhibits\Bill Tables\Bill Table Queries\Bill_Tables_Frequency_Distribution (2019).xlsx"
+
+
+______________________________
+9/6/21 - MATCH functions using powerBI using SC9
+		e.g. sum the GT Demand HT LT, 
+		Primary Demand  HT LT 
+		& Peak ON Off Peak
+
+
+- goto TABLE on left side 
+- click on NEW COlUMN - click into its formula Bar for New Column
+	- Column = GT_DEMAND_LT + GT_DEMAND_HT
+		- right click in Column & Rename to GT_DEMAND_LTHT
+		- click ApplyChanges
+	
+	- Repeat for other columns to add or any operation
+
+
+If however wanted to Group the fields by new criteria then
+would use GROUP BY functions as follows:
+
+	- Transform Data functions for 
+	- then select GROUPBY on top right side 
+	- select GROUP BY - Basic
+
+	- e.g. select CYCLE MONTH
+	- New Column Name: SumOfOnPeakKWHLT
+	- Operation: SUM
+	- Column: ON_PEAK_KWH_LT
+	- OK
+	- Close & Apply
+	
+	- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,100 @@
+
+Sub Proration()
+
+Dim i As Integer
+Dim j As Integer
+Dim k As Integer
+Dim a As Integer
+Dim b As Integer
+Dim Arr
+Dim column1 As String
+Dim column2 As String
+Dim column3 As String
+Dim lookupValue1 As String
+Dim lookupValue2 As String
+Dim lookupValue3 As String
+Dim returnValue1 As Integer
+Dim returnValue2 As Integer
+Dim returnValue3 As Integer
+
+Worksheets("SC1").Range("A49:A79").Copy
+Worksheets("SC1").Range("A93:A133").PasteSpecial Paste:=xlPasteFormulasAndNumberFormats
+
+Range("H81").Formula = "=IF(H1="""","""",MONTH(H1))"
+Range("H82").Formula = "=IF(H2="""","""",MONTH(H2))"
+Range("H83").Formula = "=IF(OR(H1="""",H2=""""),"""",IF(H82-H81=2,H81+1,""""))"
+
+Range("H84").Formula = "=IF(OR(H1="""",H2=""""),"""",IF(H81=H82,0,(DAY(EOMONTH(H1,0))-DAY(H1))/DAY(EOMONTH(H1,0))))"
+Range("H85").Formula = "=IF(OR(H1="""",H2=""""),"""",DAY(H2)/DAY(EOMONTH(H2,0)))"
+Range("H86").Formula = "=IF(OR(H1="""",H2=""""),"""",IF(H82-H81=2,1,0))"
+Range("H87").Formula = "=IF(OR(H1="""",H2=""""),"""",MONTH(H1)&YEAR(H1))"
+Range("H88").Formula = "=IF(OR(H1="""",H2=""""),"""",MONTH(H2)&YEAR(H2))"
+Range("H89").Formula = "=IF(OR(H1="""",H2=""""),"""",IF(H82-H81=2,(H81+1)&YEAR(H1),""""))"
+
+
+
+lookupValue1 = Range("H87")
+lookupValue2 = Range("H88")
+lookupValue3 = Range("H89")
+
+Arr = Array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+
+
+b = 95
+
+For a = 51 To 79
+
+For i = 2 To 26
+    If lookupValue1 = Cells(5, i) Then
+        returnValue1 = Cells(a, i)
+        column1 = Arr(i - 1)
+    End If
+Next i
+
+For j = 2 To 26
+    If lookupValue2 = Cells(5, j) Then
+        returnValue2 = Cells(a, j)
+        column2 = Arr(j - 1)
+    End If
+
+Next j
+
+For k = 2 To 26
+    If lookupValue3 = Cells(5, k) Then
+        returnValue3 = Cells(a, k)
+        column3 = Arr(k - 1)
+    End If
+Next k
+
+Cells(b, 8).Formula = "=IFERROR((H$84* " & column1 & a & " )+(H$85* " & column2 & a & ")+(H$86* " & column3 & a & "),"""")"
+
+b = b + 1
+
+Next a
+
+Range("H123").Select
+
+
+End Sub
+
+
+Sub Refresh()
+
+'Range("A81:H123").Copy
+Range("A81:H123").Clear
+Range("A81:H123").HorizontalAlignment = xlCenter
+Range("H84:H86").NumberFormat = "0.00%"
+Range("H95:H123").NumberFormat = "\$#,##0.00"
+Range("H79").Select
+
+
+
+End Sub
+
+
+
+
+
+
+
+

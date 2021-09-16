@@ -1,0 +1,214 @@
+open jypiter notebook
+
+
+import statsmodels.api as sm
+
+from sklearn import linear_model 
+
+import pandas as pd
+
+df = pd.read_excel("C:\\Users\\KOROPEYB\\Desktop\\crackers\\sandbox\\Book2.xlsx", sheet_name = "DataFrame", headers = 7)
+
+df
+
+# since have 3 summers & winters need 3 different 
+# summer (YD1S, YD2S, YD3S) regression equation and 
+# 3 different winter regressions (YD1W, YD2W, YD3W)
+# now for regression extract our Xs and our Y values.
+
+
+YD1S
+
+YD2S = df["D2: 8-8 Summer"]
+YD2S
+
+YD3S = df["D3: All Day Summer"]
+YD3S
+
+YD1W = df["D1: 8-6 Winter"]
+YD2W = df["D2: 8-8 Winter"]
+YD3W = df["D3: All Day Winter"]
+YD1W
+YD2W
+YD3W
+
+
+# for now YD1S is our regression equation
+# D1: 8-6 Summer = YD1S variable name
+
+YD1S = df["D1: 8-6 Summer"]  # OUR DEPENDENT VARIABLE
+			     # or y = YD1S
+
+			     # and our INDEPENDENT VARIABLES
+			     # are x1 = YD2S, x2 = YD3S,
+			     # x3 = YD1W, x4 = YD2W,
+			     # and x5 = YD3W
+
+
+
+x = df[["D2: 8-8 Summer", "D3: All Day Summer","D1: 8-6 Winter", "D2: 8-8 Winter", "D3: All Day Winter"]]                   
+# in this case x are each of the collective 5 independent variables
+# while y is YD1S our DEPENDENT variable
+
+x
+   
+model = sm.OLS(YD1S, x).fit()
+
+model.summary()
+
+
+
+# JypiterNotebook OUTPUT:
+
+OLS Regression Results
+	Dep. Variable:	D1: 8-6 Summer	R-squared (uncentered):	1.000
+		Model:	OLS	Adj. R-squared (uncentered):	1.000
+		Method:	Least Squares	F-statistic:	6569.
+		Date:	Thu, 17 Dec 2020	Prob (F-statistic):	1.75e-09
+		Time:	19:24:49	Log-Likelihood:	6.3798
+     No. Observations:	9	AIC:	-4.760
+         Df Residuals:	5	BIC:	-3.971
+             Df Model:	4		
+      Covariance Type:	nonrobust		
+
+		coef	std err	t	P>|t|	[0.025	0.975]
+D2: 8-8 Summer	-0.2270	0.490	-0.463	0.663	-1.487	1.033
+D3: All Day Summer	-1.3510	0.536	-2.523	0.053	-2.728	0.026
+D1: 8-6 Winter	2.05e-16	1.24e-16	1.650	0.160	-1.14e-16	5.24e-16
+D2: 8-8 Winter	2.8293	0.836	3.384	0.020	0.680	4.979
+D3: All Day Winter	-0.6662	0.653	-1.020	0.355	-2.345	1.013
+
+	Omnibus:	1.312	Durbin-Watson:	1.481
+   Prob(Omnibus):	0.519	Jarque-Bera (JB):	0.931
+	    Skew:	0.645	Prob(JB):	0.628
+	Kurtosis:	2.094	Cond. No.	1.09e+19
+
+
+
+
+
+
+________________________
+
+import numpy as np
+import statsmodels.api as sm
+from sklearn import linear_model
+import pandas as pd
+
+df = pd.read_excel("C:\\Users\\KOROPEYB\\Desktop\\crackers\\sandbox\\Book2.xlsx", sheet_name = "DataFrame", headers = 7)
+
+df
+
+
+
+
+_________________________
+import numpy as np
+
+
+np.corrcoef(df)
+
+
+
+
+
+# JypiterNotebook OUTPUT:  
+
+
+array([[1.        , 1.        , 0.99999999, 0.99999998, 0.99999998,
+        0.99999995, 0.99999992, 0.99999991, 0.99999991],
+       [1.        , 1.        , 0.99999999, 0.99999999, 0.99999999,
+        0.99999996, 0.99999993, 0.99999992, 0.99999992],
+       [0.99999999, 0.99999999, 1.        , 1.        , 0.99999999,
+        0.99999998, 0.99999993, 0.99999993, 0.99999992],
+       [0.99999998, 0.99999999, 1.        , 1.        , 1.        ,
+        0.99999998, 0.99999994, 0.99999993, 0.99999993],
+       [0.99999998, 0.99999999, 0.99999999, 1.        , 1.        ,
+        0.99999999, 0.99999995, 0.99999994, 0.99999994],
+       [0.99999995, 0.99999996, 0.99999998, 0.99999998, 0.99999999,
+        1.        , 0.99999997, 0.99999996, 0.99999996],
+       [0.99999992, 0.99999993, 0.99999993, 0.99999994, 0.99999995,
+        0.99999997, 1.        , 1.        , 0.99999999],
+       [0.99999991, 0.99999992, 0.99999993, 0.99999993, 0.99999994,
+        0.99999996, 1.        , 1.        , 0.99999999],
+       [0.99999991, 0.99999992, 0.99999992, 0.99999993, 0.99999994,
+        0.99999996, 0.99999999, 0.99999999, 1.        ]])
+
+
+
+
+
+
+______________________
+The principal components are actually a NEW set of variables, NOT
+necessarily related to the original variables.  They are a set of
+NEW variables that CAPTURE the MOST VARIATION in the Original data
+and can therefore be used to Describe the original data without
+having a large number of variables as may be the case
+in the original dataset.
+
+An important thing to realize here is that, the principal components
+are less interpretable and don't have any real meaning since they
+are constructed as linear combinations of the Initial variables.
+
+Geometrically speaking, principal components represent the DIRECTIONS
+of the data that Explain a MAXIMAL AMOUNT of VARIANCE, that is to 
+say, the Lines that capture Most Information of the data.
+
+https://builtin.com/data-science/step-step-explanation-principal-component-analysis
+
+_________________________________
+12/27/2020  Import PCA (principal component analysis) from SK Learn library
+
+from sklearn.decomposition import PCA
+
+import pandas as pd
+
+df = pd.read_excel("C:/Users/KOROPEYB/Desktop/crackers/sandbox/Book2.xlsx", sheet_name= "DataFrame")
+
+df.head()
+
+pca_SWRates = PCA(n_components = 2) 	# e.g. first we trial 2 most prominant independent variables of "SummerWInterRates"
+					# here we create an instance of the PCA class
+
+principal_components = pca_SWRates.fit_transform(df)	# this fit_transform reduces the data into e.g. 2 most prominant independent variables
+							# here the method is applied to actually reduce the total number of principal components down to two (2)
+
+pc_df = pd.DataFrame(data = principal_components, columns=['principal component 1', 'principal component 2'])
+			# we now display the results
+
+
+pc_df.tail()		# displays the bottom e.g. 5 rows of results
+pc_df.head()
+
+
+print('explained variation per principal component: {}'.format(pca_SWRates.explained_variance_ratio_))
+
+		# next see what% of variance is explained by each principal component
+
+ANSWER/OUTPUT:
+	explained variation per principal component: [0.9939722  0.00375494]
+		# the 1st principal component is explaining 99.4% of the variation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

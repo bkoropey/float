@@ -1,0 +1,45 @@
+- open word document - highlight select value - INSERT - LINKS drop down - BOOKMARK
+
+- give Bookmark a name: e.g. "value"  -  ADD 
+
+- next goto Excel - goto cell within excel that you want value from word to appear  e.g. CJ4
+
+- in e.g. CJ4 type in "value"  - then while still in cell e.g. CJ4
+
+		 - INSERT - LINKS drop down - click "Insert Link" at bottom
+
+		- then browse to location of word document target file e.g. value & select it once (do not double click file name)
+
+		- then within ADDRESS: field at bottom FIRST enter file name followed by # followed by "name of bookmark"
+			e.g. Doc1.docx#value
+
+- go back to e.g. CJ4 and change name from value to e.g. $53.12
+
+_____________________________________________
+Repeat with PDF on website via:
+
+- open the url https://www.coned.com/_external/cerates/documents/elecPSC10/electric-tariff.pdf
+
+	- scroll to page of interest e.g. 579  for value e.g. $7.57
+
+- goto CJ1 in excel and enter e.g. $7.57 - then in CJ1
+
+	- INSERT - LINKS drop down - click "Insert Link" at bottom
+
+	- at ADDRESS: at bottom enter url followed by #pageNumber e.g. ...pdf#page=579
+
+	https://www.coned.com/_external/cerates/documents/elecPSC10/electric-tariff.pdf#page=579 
+
+	- OK
+
+_________________________________
+To link to specific excel cell e.g. B5 within e.g. sheet1 from outlook email do the following :
+
+e.g. file:///C:\Book1.xlsm#Sheet1!B5
+
+
+"\\m02009fi\datadirs\Rate Engineering\ELECRATE\RateCase 2022\Initial Filing\NYPA Database\NYPA DATA 2020.xlsx"#2020 v. 2017 Variance by SC!E76
+
+		
+
+

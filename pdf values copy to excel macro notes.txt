@@ -1,0 +1,41 @@
+https://www.coned.com/_external/cerates/documents/elecPSC10/MSCAdjCurrentPSCNo10.pdf
+
+
+
+Sub PdfToExcel()
+
+Dim MyWorksheet As Worksheet
+Dim AdobeReaderPath As String
+Dim PathAndFileName As String
+Dim ShellPathName As String
+
+Set MyWorksheet = ActiveWorkbook.Worksheets("Sheet1")
+
+AdobeReaderPath = "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe"
+PathAndFileName = Worksheets("Sheet1").Range("B2")      'where URL resides in sheet
+
+ShellPathName = AdobeReaderPath & " """ & PathAndFileName & """"
+
+Call Shell( _
+    PathName:=ShellPathName, WindowStyle:=vbNormalFocus)
+    
+Application.Wait Now + TimeValue("0:00:03")
+
+SendKeys "%vpc"
+SendKeys "^a"
+SendKeys "^c"
+
+Application.Wait Now + TimeValue("0:00:30")
+
+With MyWorksheet
+    .Range("b4").Select
+    .PasteSpecial Format:="Text"
+
+End With
+
+Call Shell("TaskKill /F /IM AcroRd32.exe", vbHide)
+
+
+
+
+End Sub

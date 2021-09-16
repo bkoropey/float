@@ -1,0 +1,18 @@
+Using principal component analysis:
+
+We want to predict the Merchant Function Charge per kWh (dependent variable)
+with the MAC, MSCI, MSCII and electric supply charge MSC are our independent variables
+
+
+5 iterations of assigning difference dependent variables all the while
+keeping MFC, MAC, MSCI, MSCII and SupplyCHarge MSC as independent variables:
+
+1) MFC
+2) MAC
+3) MSCI
+4) MSCII
+5) SupplyCharge MSC
+
+________________
+get 5 years of monthly (e.g. 5 years of January, etc...) for each
+

@@ -1,0 +1,51 @@
+Solver_Book1.xlsx
+
+- First set I9 = Sum(B8:E8)*(1+$F$9)*50000
+
+- Solver:
+- SetObjective:  		I9
+- To:		 		Max
+- ByChanging VariableCells:	B8:E8
+
+	# since we don't have predefined values of 
+	# 4 variables x1:x4 to start with
+	# therefore we set empty cells "B8 to E8" for both max/min
+	# as placeHolders to have solver return the optimal
+	# the optimal values in their place do as follows:
+
+- Subject to the Contraints:	Add Cell_Reference B8 >= B10 
+				Add Cell_Reference B8 <= B9
+				Add Cell_Reference C8 >= C10 
+				Add Cell_Reference C8 <= C9 
+				Add Cell_Reference D8 >= D10 
+				Add Cell_Reference D8 <= D9
+				Add Cell_Reference E8 >= E10 
+				Add Cell_Reference E8 <= E9
+
+- Solve	
+_____________________
+Repeat same above for minimizing objective function
+				
+
+
+
+_________________________
+Sup SolverLoop()
+
+	SolverOk SetCell:="J19", MaxMinVal:=  , ValueOf:= "0", ByChange:="C19:F19"
+	SolverAdd CellRef:= "  ", Relation:=  , FormulaText:= "0"
+	SolverAdd CellRef:= "  ", Relation:=  , FormulaText:= "0"
+	SolverAdd CellRef:= "  ", Relation:=  , FormulaText:= "0"
+	SolverAdd CellRef:= "  ", Relation:=  , FormulaText:= "0"
+
+	SolverAdd CellRef:= "J18", Relation:=2 , FormulaText:= "1"
+	SolverAdd CellRef:= "J19", Relation:=2  , FormulaText:= "U$19"
+
+
+	SolverSolve UserFinish:=True
+
+	SolverReset
+
+End Sub
+
+

@@ -1,0 +1,231 @@
+Dave Blessing said to contact Lai Yim of regulatory account group to get CECONY's WACC.
+
+I was referred to you as I am trying to obtain CECONY's cost of capital as of December 2020 as provided by the regulatory accounting group.
+
+
+
+______________________________________
+Good morning, Anna., by Koropey, Boris.
+11:36 AM
+
+Good morning, Anna.
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:37 AM
+
+Hello
+I was referred to you as am trying to obtain the most recent CECONY equity and debt ratios as well a …, by Koropey, Boris.
+11:37 AM
+
+I was referred to you as am trying to obtain the most recent CECONY equity and debt ratios as well as the tax rate.
+ 
+Typically this would be something provided by the treasury department as updates into “standard assu …, by Koropey, Boris.
+
+Typically this would be something provided by the treasury department as updates into “standard assumptions” for use in project feasibility financial models, etc..
+ 
+Please let me know if you have a moment for this.  Thank you., by Koropey, Boris.
+
+Please let me know if you have a moment for this.  Thank you.
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:41 AM
+
+Hi Boris, our team deals with issuing debt and equity but we don't keep track within our group of the equity ratio
+
+I am trying to find out who would be a correct contact for this
+Thank you very much, Anna., by Koropey, Boris.
+11:42 AM
+
+Thank you very much, Anna.
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:43 AM
+
+in general the ratio is supposed to be 48%/52% equity/debt
+Might you also know the tax rate that we use?  , by Koropey, Boris.
+11:45 AM
+
+Might you also know the tax rate that we use?  
+Also need to find out what our cost of equity and cost of debt is to arrive at WACC.  , by Koropey, Boris.
+
+Also need to find out what our cost of equity and cost of debt is to arrive at WACC.  
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:49 AM
+
+OK, that will require more time
+
+When are you looking for this data?
+
+The last time I ran WACC was for Q3 2020
+tomorrow/today if possible.  If have the Cost of Equity, Cost of Debt, the tax rate and the % of Equ …, by Koropey, Boris.
+11:52 AM
+
+tomorrow/today if possible.  If have the Cost of Equity, Cost of Debt, the tax rate and the % of Equity to % of Debt for December then I think we have it.  Thank you very much.
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:53 AM
+
+tax rate we estimate 27% in our models
+great  thanks, by Koropey, Boris.
+11:53 AM
+
+great  thanks
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:53 AM
+
+equity/debt you can pull of 10K
+
+Do you want the current cost of debt/equity or as of year end?
+both., by Koropey, Boris.
+11:54 AM
+
+both.
+Profile picture of Owsiany, Anna E..
+Owsiany, Anna E.
+11:55 AM
+
+OK
+And need Re (cost of equity percent) and  Rd (cost of debt percent), by Koropey, Boris.
+11:55 AM
+
+And need Re (cost of equity percent) and  Rd (cost of debt percent)
+
+
+
+
+______________________________
+
+[2:35 PM] Koropey, Boris
+    sorry to torture you with this.  You were kind enough to take my questions.  We had a much higher wacc at Duke Energy so it makes me think.
+​[2:35 PM] Owsiany, Anna E.
+    This is what i had a the end of Q3:
+​[2:35 PM] Owsiany, Anna E.
+    
+
+
+
+ 
+ Book Value 
+
+CEI Capital Structure
+ Amount 
+ % 
+
+Debt (including current portion of LTD)
+$21,171,295
+50.76%
+
+Short-term debt
+1,828,929
+4.38%
+
+Equity
+18,710,655
+44.86%
+
+ 
+$41,710,879
+100.00%
+
+
+
+
+​[2:36 PM] Owsiany, Anna E.
+    do you remember when you ran the analysis at Duke?
+​[2:37 PM] Owsiany, Anna E.
+    My guess would be the expected market return could impact your valuation, because I don't think there is a "standard" number to use for that.
+​[2:39 PM] Owsiany, Anna E.
+    if you need me to pull any other data points, just reach out
+​[2:39 PM] Koropey, Boris
+    October.  The numbers they gave were given as "standard assumptions" from the treasury department so as to leave no room for interpretation.  
+​[2:42 PM] Koropey, Boris
+    and you would not add in the commercial paper rate as part of the cost of debt?
+​[2:43 PM] Owsiany, Anna E.
+    I calculated cost short-term debt separately from long-term debt
+​[2:43 PM] Owsiany, Anna E.
+    
+
+
+
+ 
+ Book Value 
+ 
+Market Value
+ 
+Pre-Tax
+After-Tax
+ 
+
+CEI Capital Structure
+ Amount 
+ % 
+ 
+ Amount 
+ % 
+ 
+Cost
+Cost
+WACC
+
+Debt (including current portion of LTD)
+$21,171,295
+50.76%
+ 
+$21,171,295
+44.71%
+ 
+2.01%
+1.47%
+0.66%
+
+Short-term debt
+1,828,929
+4.38%
+ 
+1,828,929
+3.86%
+ 
+0.32%
+0.23%
+0.01%
+
+Equity
+18,710,655
+44.86%
+ 
+24,354,295
+51.43%
+ 
+4.95%
+4.95%
+2.55%
+
+ 
+$41,710,879
+100.00%
+ 
+$47,354,519
+100.00%
+ 
+ 
+ 
+3.21%
+
+
+
+
+[2:44 PM] Koropey, Boris
+    that would be great.  I will use these values of 3.14% wacc on 12/31/2020 and 3.74% as of 3/5/21.
+​[2:44 PM] Owsiany, Anna E.
+    short-term debt added only 1bps to the WACC in Q3
+​[2:44 PM] Owsiany, Anna E.
+    IF you want feel free to reach out to Dave Blessing, my manager, to see if he has a different view on WACC
+​[2:47 PM] Koropey, Boris
+    if you think that would be okay then I will do that as well.  I really appreciate your assistance and will likely have questions in the future.  Thank you again, Anna.
+​[2:48 PM] Owsiany, Anna E.
+    definitely, better to get more inputs than less. 
+
+
+

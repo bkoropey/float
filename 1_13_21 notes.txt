@@ -1,0 +1,135 @@
+Zen and The Art of Rate Design
+	Rutgers Busn School
+	Center of Research in Regulated Industries
+	Regulated Webinar Seminar
+	hosted by Victor Glass
+	https://www.business.rutgers.edu/regulated-industries-center
+
+
+Jeanne Fox, Columbia and Rutgers (Regulatory)
+
+
+Cyndee Fang, Sempra, large utility
+
+
+Ahamad Faruqui, Brattle (consulting, TOU)
+
+
+Some books referenced during this week's Rutger's Rate Eng seminar (check my spelling):
+
+	Bob Wilson - Non Linear Pricing
+
+	Rone Cose - contraversial of non linear costs
+
+	Ralph Turvy "6 part tariff"
+		non coincident demand
+		coincident demand
+		fixed charge
+
+
+	"Multi Part PRicing"
+
+	"Subscription Pricing"
+		tested by SCE many years ago
+		currently used in Holland
+
+	Cost & Causation are basic principles
+
+
+	
+
+	a rate that recognizes that capacity & energy
+	are 2 different services 
+		fixed charge
+
+		energy charge
+
+		time of use (demand charge)
+
+	
+
+
+Bryan Hannegan, Holy Cross Energy (Cooperative)
+	Have classic volumetric rate design (2 parts)
+	
+	https://www.holycross.com/programs-overview/
+
+
+Mark LeBel, RAP (Consumer Affairs)
+
+	1. use short run Marginal Cost pricing where you can
+	2. layer-in long-run marginal cost 
+		(shared system costs can be done on a time
+		varying basis)
+			its the time of system stress which
+			is important
+	3. Price on system Flows
+	
+	The Temperature of the heating oil on transformer
+	is closely related to demand (for proxy)
+
+
+Paul Nelson, Barkovich and Yap (C&I Customers)
+	
+	TimeOfUse tells us HOW TO USE THE GRID
+		Transportation sector & the Heating sector
+		
+
+
+
+Paul Zummo, American Public Power Association (Municipals)  
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

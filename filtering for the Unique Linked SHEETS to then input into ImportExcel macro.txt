@@ -1,12 +1,19 @@
 
 
-=TRIM(LEFT(B2,FIND("!",B2,1)))
+'=TRIM(LEFT(B2,FIND("!",B2,1)))
 
-- then Data - REMOVE Duplicates - in Column C
+'- then Data - REMOVE Duplicates - in Column C
 
-	- Expand the Selection
+	'- Expand the Selection
 	
-	- then ONLY select =TRIM(LEFT(B2,FIND("!",B2,1)))
+	'- then ONLY select =TRIM(LEFT(B2,FIND("!",B2,1)))
+
+
+'- then take the cell referenced Unique sheets and enter into
+	ImportExcel.xlsm Array-&-Cell-&-Workbook MENU macro reference
+		for organized
+
+
 
 
 
